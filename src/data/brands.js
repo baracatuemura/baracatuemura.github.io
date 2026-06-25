@@ -24,7 +24,7 @@ const brands = [
   { id: 'broer', name: 'Broer', file: 'brand-broer.png' },
   { id: 'likeme', name: 'LikeMe', file: 'brand-likeme.png' },
   { id: 'crisol', name: 'Crisol', file: 'brand-crisol.png' },
-  { id: 'cannonhome', name: 'Cannon Home', file: 'brand-cannonhome.png' },
+
   { id: 'dunlop', name: 'Dunlop', file: 'brand-dunlop.png' },
   { id: 'isobar', name: 'Isobar', file: 'brand-isobar.png' },
   { id: 'ogilvy', name: 'Ogilvy', file: 'brand-ogilvy.png' },
