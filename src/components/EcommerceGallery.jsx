@@ -19,7 +19,8 @@ function EcommerceGallery() {
     <section className="section" id="ecommerce">
       <div className="container">
         <h2>E-Commerce Stores</h2>
-        <div className="ecom-grid">
+      </div>
+      <div className="ecom-grid">
           {stores.map((store) => {
             const [r, g, b] = hexToRgb(store.color)
             const textColor = luminance(r, g, b) > 0.5 ? '#1e293b' : '#fff'
@@ -42,7 +43,6 @@ function EcommerceGallery() {
             )
           })}
         </div>
-      </div>
     </section>
   )
 }
