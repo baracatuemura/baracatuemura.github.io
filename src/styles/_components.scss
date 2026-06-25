@@ -23,6 +23,7 @@
 
 // ─── Sections ───
 .section {
+  scroll-margin-top: 80px;
   padding: 48px 0;
 
   &:nth-child(even) {
