@@ -86,8 +86,7 @@ const experience = [
     title: 'Front-end Developer',
     company: 'Zaboo!',
     date: 'Sep 2013 – May 2014 · 9mo',
-    logo: null,
-    placeholder: 'Z!',
+    logo: 'assets/images/companys/zaboo.png',
     description:
       'Startup in building materials search built with MVC Framework CodeIgniter. Responsible for all HTML, CSS, and JavaScript development.',
   },

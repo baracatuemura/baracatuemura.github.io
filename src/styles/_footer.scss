@@ -1,0 +1,19 @@
+@use 'variables' as *;
+
+.footer {
+  text-align: center;
+  padding: 32px 0;
+  color: var(--md-sys-color-on-surface-variant);
+  font-size: 0.875rem;
+
+  &__social {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  &__copy {
+    color: $brand-color;
+  }
+}

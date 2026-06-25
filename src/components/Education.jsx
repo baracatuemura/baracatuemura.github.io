@@ -3,7 +3,7 @@ import education from '../data/education'
 
 function Education() {
   return (
-    <section className="section">
+    <section className="section" id="education">
       <div className="container">
         <h2>Education</h2>
         {education.map((item, i) => (

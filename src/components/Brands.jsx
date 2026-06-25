@@ -3,7 +3,7 @@ import brands from '../data/brands'
 
 function Brands() {
   return (
-    <section className="section">
+    <section className="section" id="brands">
       <div className="container">
         <h2>Brands I've Worked With</h2>
         <div className="brand-grid">

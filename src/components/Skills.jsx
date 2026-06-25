@@ -3,7 +3,7 @@ import skills from '../data/skills'
 
 function Skills() {
   return (
-    <section className="section">
+    <section className="section" id="skills">
       <div className="container">
         <h2>Skills</h2>
         <div className="skills">

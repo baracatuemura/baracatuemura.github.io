@@ -1,0 +1,224 @@
+@use 'variables' as *;
+
+// ─── M3 Icon Button ───
+.m3-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: $icon-btn-size;
+  height: $icon-btn-size;
+  border-radius: 50%;
+  color: var(--md-sys-color-on-surface-variant);
+  text-decoration: none;
+  transition: background 0.15s;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.06);
+  }
+
+  svg {
+    fill: currentColor;
+  }
+}
+
+// ─── Sections ───
+.section {
+  padding: 48px 0;
+
+  &:nth-child(even) {
+    background: $even-section-bg;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+    letter-spacing: -0.01em;
+  }
+}
+
+// ─── About ───
+.about-text {
+  font-size: 1.05rem;
+  color: $accent-text;
+}
+
+// ─── Brands ───
+.brand-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 24px 16px;
+}
+
+.brand-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+
+  img {
+    height: 36px;
+    width: auto;
+    filter: grayscale(1) opacity(0.5);
+    transition: filter 0.3s;
+  }
+
+  &:hover img {
+    filter: grayscale(0) opacity(1);
+  }
+
+  span {
+    font-size: 0.7rem;
+    color: $brand-color;
+    white-space: nowrap;
+    transition: color 0.3s;
+  }
+
+  &:hover span {
+    color: $on-surface;
+  }
+}
+
+// ─── Skills ───
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skill-tag {
+  background: $tag-bg;
+  color: $on-surface;
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+// ─── Experience ───
+.job {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 36px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.job-logo {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: $logo-bg;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.job-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.job-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  margin-bottom: 4px;
+}
+
+.job-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.job-company {
+  color: $company-color;
+  font-weight: 500;
+}
+
+.job-date {
+  font-size: 0.875rem;
+  color: $on-surface-variant;
+  white-space: nowrap;
+}
+
+.job-description {
+  color: $accent-text;
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+}
+
+.project-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  list-style: none;
+  font-size: 0.85rem;
+  color: $on-surface-variant;
+
+  li::before {
+    content: "\00b7";
+    margin-right: 4px;
+  }
+}
+
+// ─── Education ───
+.education-item {
+  margin-bottom: 16px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.education-degree {
+  font-weight: 600;
+}
+
+.education-school {
+  color: $accent-text;
+}
+
+.education-date {
+  font-size: 0.875rem;
+  color: $on-surface-variant;
+}
+
+// ─── Languages ───
+.languages {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.language-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--md-sys-color-outline);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.language-name {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.language-proficiency {
+  font-size: 0.875rem;
+  color: $on-surface-variant;
+}

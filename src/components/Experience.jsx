@@ -3,7 +3,7 @@ import experience from '../data/experience'
 
 function Experience() {
   return (
-    <section className="section">
+    <section className="section" id="experience">
       <div className="container">
         <h2>Experience</h2>
         {experience.map((job) => (

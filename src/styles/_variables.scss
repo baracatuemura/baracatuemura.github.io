@@ -1,0 +1,42 @@
+// ─── M3 Design Tokens ───
+$primary: #2563eb;
+$on-primary: #fff;
+$surface: #f8fafc;
+$surface-container: #f1f5f9;
+$on-surface: #1e293b;
+$on-surface-variant: #64748b;
+$outline: #cbd5e1;
+$brand-color: #94a3b8;
+$even-section-bg: #fff;
+$accent-text: #475569;
+$tag-bg: #e2e8f0;
+$logo-bg: #f1f5f9;
+$company-color: #2563eb;
+
+// ─── Breakpoints ───
+$bp-tablet: 600px;
+$bp-desktop: 900px;
+
+// ─── Elevation ───
+$elevation-0: none;
+$elevation-2: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.08);
+$elevation-4: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+
+// ─── Layout ───
+$content-max-width: 960px;
+$app-bar-height: 64px;
+$icon-btn-size: 40px;
+
+// ─── CSS Custom Properties ───
+:root {
+  --md-sys-color-primary: #{$primary};
+  --md-sys-color-on-primary: #{$on-primary};
+  --md-sys-color-surface: #{$surface};
+  --md-sys-color-surface-container: #{$surface-container};
+  --md-sys-color-on-surface: #{$on-surface};
+  --md-sys-color-on-surface-variant: #{$on-surface-variant};
+  --md-sys-color-outline: #{$outline};
+  --md-sys-elevation-0: #{$elevation-0};
+  --md-sys-elevation-2: #{$elevation-2};
+  --md-sys-elevation-4: #{$elevation-4};
+}
