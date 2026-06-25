@@ -29,6 +29,7 @@ const brands = [
   { id: 'isobar', name: 'Isobar', file: 'brand-isobar.png' },
   { id: 'ogilvy', name: 'Ogilvy', file: 'brand-ogilvy.png' },
   { id: 'casadelaudio', name: 'Casa del Audio', file: 'brand-casadelaudio.png' },
+  { id: 'skullcandy', name: 'Skullcandy', file: 'skullcandy-logo-1.svg' },
   { id: 'ver', name: 'Ver', file: 'brand-ver.png' },
   { id: 'clubdebeneficios', name: 'Club de Beneficios', file: 'brand-clubdebeneficios.png' },
 ]
