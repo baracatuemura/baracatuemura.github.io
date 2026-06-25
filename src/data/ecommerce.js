@@ -24,7 +24,7 @@ const stores = [
   { id: 'cetrogar', name: 'Cetrogar', url: 'www.cetrogar.com.ar', description: 'Electrodomésticos y hogar', color: '#b6520c' },
   { id: 'efe', name: 'Efe', url: 'www.efe.com.pe', description: 'Válvulas y control de fluidos', color: '#0c76ce' },
   { id: 'ceven', name: 'Ceven', url: 'www.ceven.com', description: 'Cerámicas y revestimientos', color: '#1454a4' },
-  { id: 'cannonhome', name: 'Cannon Home', url: 'cannonhome.cl', description: 'Hogar y decoración', color: '#2ac761' },
+  { id: 'motocorp', name: 'Motocorp', url: 'motocorp.pe', description: 'Venta de motos y accesorios', color: '#d42027' },
 ]
 
 export default stores
