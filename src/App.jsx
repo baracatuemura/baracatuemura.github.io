@@ -5,6 +5,7 @@ import BrandCarousel from './components/BrandCarousel'
 import About from './components/About'
 import Skills from './components/Skills'
 import Brands from './components/Brands'
+import EcommerceGallery from './components/EcommerceGallery'
 import Experience from './components/Experience'
 import Education from './components/Education'
 import Languages from './components/Languages'
@@ -19,6 +20,7 @@ function App() {
       <About />
       <Skills />
       <Brands />
+      <EcommerceGallery />
       <Experience />
       <Education />
       <Languages />

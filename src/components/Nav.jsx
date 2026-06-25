@@ -4,6 +4,7 @@ const sections = [
   { id: 'about', label: 'About' },
   { id: 'skills', label: 'Skills' },
   { id: 'brands', label: 'Brands' },
+  { id: 'ecommerce', label: 'E‑Commerce' },
   { id: 'experience', label: 'Experience' },
   { id: 'education', label: 'Education' },
   { id: 'languages', label: 'Languages' },
