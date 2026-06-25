@@ -1,0 +1,196 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  background: #f8fafc;
+  color: #1e293b;
+  line-height: 1.6;
+}
+
+.container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+/* Header */
+.header {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  color: #fff;
+  padding: 64px 0 56px;
+  text-align: center;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+
+.header p {
+  font-size: 1.15rem;
+  color: #94a3b8;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.header .links { margin-top: 16px; }
+
+.header .links a {
+  color: #60a5fa;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.header .links a:hover { text-decoration: underline; }
+
+.header .links .sep { color: #64748b; margin: 0 8px; }
+
+/* Sections */
+.section { padding: 48px 0; }
+.section:nth-child(even) { background: #fff; }
+
+.section h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  letter-spacing: -0.01em;
+}
+
+.about-text { font-size: 1.05rem; color: #475569; }
+
+/* Brands */
+.brand-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 24px 16px;
+}
+
+.brand-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.brand-item img {
+  height: 36px;
+  width: auto;
+  filter: grayscale(1) opacity(0.5);
+  transition: filter 0.3s ease;
+}
+
+.brand-item:hover img {
+  filter: grayscale(0) opacity(1);
+}
+
+.brand-item span {
+  font-size: 0.7rem;
+  color: #94a3b8;
+  white-space: nowrap;
+  transition: color 0.3s ease;
+}
+
+.brand-item:hover span {
+  color: #1e293b;
+}
+
+/* Skills */
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skill-tag {
+  background: #e2e8f0;
+  color: #1e293b;
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* Experience */
+.job {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 36px;
+}
+
+.job:last-child { margin-bottom: 0; }
+
+.job-logo {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #f1f5f9;
+}
+
+.job-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.job-body { flex: 1; min-width: 0; }
+
+.job-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  margin-bottom: 4px;
+}
+
+.job-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.job-company {
+  color: #2563eb;
+  font-weight: 500;
+}
+
+.job-date {
+  font-size: 0.875rem;
+  color: #64748b;
+  white-space: nowrap;
+}
+
+.job-description {
+  color: #475569;
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+}
+
+.project-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  list-style: none;
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.project-list li::before {
+  content: "\00b7";
+  margin-right: 4px;
+}
+
+/* Education */
+.education-item { margin-bottom: 16px; }
+.education-item:last-child { margin-bottom: 0; }
+.education-degree { font-weight: 600; }
+.education-school { color: #475569; }
+.education-date { font-size: 0.875rem; color: #64748b; }
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 32px 0;
+  color: #94a3b8;
+  font-size: 0.875rem;
+}
