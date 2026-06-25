@@ -9,6 +9,7 @@ import EcommerceGallery from './components/EcommerceGallery'
 import Experience from './components/Experience'
 import Education from './components/Education'
 import Languages from './components/Languages'
+import ExperienceBubbles from './components/ExperienceBubbles'
 import Footer from './components/Footer'
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
       <About />
       <Skills />
       <Brands />
+      <ExperienceBubbles />
       <Experience />
       <EcommerceGallery />
       <Education />
