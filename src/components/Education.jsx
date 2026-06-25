@@ -1,3 +1,4 @@
+import React from 'react'
 import education from '../data/education'
 
 function Education() {

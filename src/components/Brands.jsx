@@ -1,3 +1,4 @@
+import React from 'react'
 import brands from '../data/brands'
 
 function Brands() {
