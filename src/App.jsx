@@ -20,8 +20,8 @@ function App() {
       <About />
       <Skills />
       <Brands />
-      <EcommerceGallery />
       <Experience />
+      <EcommerceGallery />
       <Education />
       <Languages />
       <Footer />
