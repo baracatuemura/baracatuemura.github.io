@@ -7,31 +7,37 @@ const slides = [
   {
     id: 'dunkin',
     name: "Dunkin'",
-    file: 'brand-dunkin.png',
-    description: 'Digital campaigns and platform development for one of the largest coffee and baked goods chains.',
+    file: 'brand-dunkin.webp',
+    description: 'Core architecture (Luma/Blank), dynamic UI components with Knockout.js, modular scripts via RequireJS, XML layout restructuring for scalability and performance.',
+  },
+  {
+    id: 'papajohns',
+    name: "Papa John's",
+    file: 'brand-papajohns.webp',
+    description: 'Scalable theme customizations via Magento\'s fallback system, LESS/CSS optimization, XML layout configuration, and back-end PHP adjustments.',
   },
   {
     id: 'rio2016',
     name: 'Rio 2016',
-    file: 'brand-rio2016.png',
+    file: 'brand-rio2016.webp',
     description: 'Digital experiences for the Rio 2016 Olympic Games.',
   },
   {
     id: 'fiat',
     name: 'Fiat',
-    file: 'brand-fiat.png',
+    file: 'brand-fiat.webp',
     description: 'Digital advertising and campaign solutions for the automotive giant.',
   },
   {
     id: 'nissin',
     name: 'Nissin',
-    file: 'brand-nissin.png',
+    file: 'brand-nissin.webp',
     description: 'Web platforms and brand experiences for the global food company.',
   },
   {
     id: 'jeep',
     name: 'Jeep',
-    file: 'brand-jeep.png',
+    file: 'brand-jeep.webp',
     description: 'I had the opportunity to be part of the team that created the first Jeep website in Brazil.',
   },
 ]
