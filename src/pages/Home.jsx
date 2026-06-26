@@ -2,6 +2,7 @@ import Nav from '../components/Nav'
 import Header from '../components/Header'
 import BrandCarousel from '../components/BrandCarousel'
 import About from '../components/About'
+import MagentoExpertise from '../components/MagentoExpertise'
 import Skills from '../components/Skills'
 import Brands from '../components/Brands'
 import Experience from '../components/Experience'
@@ -19,6 +20,7 @@ function Home() {
       <main>
         <BrandCarousel />
         <About />
+        <MagentoExpertise />
         <Skills />
         <Brands />
         <Experience />

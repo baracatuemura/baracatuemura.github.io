@@ -2,6 +2,7 @@ import useScrollSpy from '../hooks/useScrollSpy'
 
 const sections = [
   { id: 'about', label: 'About' },
+  { id: 'magento-expertise', label: 'Expertise' },
   { id: 'skills', label: 'Skills' },
   { id: 'brands', label: 'Brands' },
   { id: 'experience', label: 'Experience' },

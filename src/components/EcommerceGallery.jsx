@@ -34,8 +34,19 @@ function EcommerceGallery() {
                     style={{ '--card-color': store.color, '--card-text': textColor }}
                   >
                     <h3>{store.name}</h3>
-                    <p>{store.description}</p>
-                    <span className="ecom-url">{store.url}</span>
+                    {store.role ? (
+                      <p className="store-role"><strong>Tech Stack & Role:</strong> {store.role}</p>
+                    ) : (
+                      <p>{store.description}</p>
+                    )}
+                    <a
+                      href={`https://${store.url}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ecom-url"
+                    >
+                      Visit Website ↗
+                    </a>
                   </div>
                 </div>
               </article>
