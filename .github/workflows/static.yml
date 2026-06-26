@@ -2,14 +2,10 @@
 name: Deploy static content to Pages
 
 on:
-  # Executa ao dar push na branch master (ajuste se sua branch principal for 'main')
   push:
     branches: ["master"]
-
-  # Permite rodar manualmente pela aba Actions
   workflow_dispatch:
 
-# Permissões necessárias para o GitHub Pages
 permissions:
   contents: read
   pages: write
@@ -26,33 +22,23 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4.2.2 # Tag atualizada e estável
+      - uses: actions/checkout@v4
 
-      # --- CONFIGURAÇÃO DO NODE ---
       - name: Setup Node.js
-        uses: actions/setup-node@v4.2.0 # Versão interna corrigida da Action
+        uses: actions/setup-node@v4
         with:
-          node-version: '24'
+          node-version: 22
           cache: 'npm'
 
-      # --- Instala as dependências do seu projeto ---
-      - name: Install dependencies
-        run: npm ci
+      - run: npm ci
+      - run: npm run build
 
-      # --- Cria a versão de produção (Gera a pasta /build) ---
-      - name: Build React App
-        run: npm run build
+      - uses: actions/configure-pages@v5
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v5.0.0 # Tag atualizada
-
-      # --- Upload apenas da pasta compilada ---
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3.0.1 # Tag atualizada
+      - uses: actions/upload-pages-artifact@v3
         with:
-          path: './build' 
+          path: './dist'
 
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4.4.0 # Atualizado para v4 estável para Pages do GitHub
+        uses: actions/deploy-pages@v4
