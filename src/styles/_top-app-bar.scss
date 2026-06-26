@@ -49,8 +49,12 @@
   }
 
   @media (max-width: 768px) {
-    &__role,
-    &__leading {
+    &__role {
+      display: none;
+    }
+
+    &__leading > a:first-child,
+    &__leading > a:last-child {
       display: none;
     }
   }
