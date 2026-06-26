@@ -43,6 +43,27 @@ const slides = [
 ]
 
 function BrandCarousel() {
+  const ref = React.useRef(null)
+
+  React.useEffect(() => {
+    const el = ref.current
+    if (!el) return
+
+    const update = () => {
+      el.querySelectorAll('.slick-slide[aria-hidden="true"]').forEach((slide) => {
+        slide.setAttribute('inert', '')
+      })
+      el.querySelectorAll('.slick-slide[aria-hidden="false"]').forEach((slide) => {
+        slide.removeAttribute('inert')
+      })
+    }
+
+    const observer = new MutationObserver(update)
+    observer.observe(el, { childList: true, subtree: true, attributes: true, attributeFilter: ['aria-hidden'] })
+    update()
+    return () => observer.disconnect()
+  }, [])
+
   const settings = {
     dots: true,
     infinite: true,
@@ -56,7 +77,7 @@ function BrandCarousel() {
   }
 
   return (
-    <section className="brand-carousel" id="brand-carousel">
+    <section className="brand-carousel" id="brand-carousel" ref={ref}>
       <Slider {...settings}>
         {slides.map((slide) => (
           <div key={slide.id} className="brand-carousel__slide">
