@@ -1,4 +1,3 @@
-import React from 'react'
 import stores from '../data/ecommerce'
 
 function hexToRgb(hex) {
@@ -25,10 +24,10 @@ function EcommerceGallery() {
             const [r, g, b] = hexToRgb(store.color)
             const textColor = luminance(r, g, b) > 0.5 ? '#1e293b' : '#fff'
             return (
-              <div key={store.id} className="ecom-card">
+              <article key={store.id} className="ecom-card">
                 <div className="ecom-card-inner">
                   <div className="ecom-card-front">
-                    <img src={`assets/images/ecommerce/${store.id}.png`} alt={store.name} />
+                    <img src={`assets/images/ecommerce/${store.id}.webp`} alt={store.name} loading="lazy" />
                   </div>
                   <div
                     className="ecom-card-back"
@@ -39,7 +38,7 @@ function EcommerceGallery() {
                     <span className="ecom-url">{store.url}</span>
                   </div>
                 </div>
-              </div>
+              </article>
             )
           })}
         </div>

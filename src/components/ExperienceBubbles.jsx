@@ -400,7 +400,7 @@ function ExperienceBubbles() {
               </button>
               <div className="bubbles-expand-logo">
                 {job.logo ? (
-                  <img src={job.logo} alt={`${job.company} logo`} />
+                  <img src={job.logo} alt={`${job.company} logo`} loading="lazy" />
                 ) : (
                   <div className="bubbles-expand-logo-placeholder">
                     {job.placeholder}

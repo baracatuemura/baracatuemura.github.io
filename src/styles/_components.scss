@@ -49,6 +49,9 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
   gap: 24px 16px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .brand-item {
@@ -174,6 +177,12 @@
 }
 
 // ─── Education ───
+.education-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
 .education-item {
   margin-bottom: 16px;
 
@@ -200,6 +209,9 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .language-item {

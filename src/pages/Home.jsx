@@ -16,15 +16,17 @@ function Home() {
     <>
       <Nav />
       <Header />
-      <BrandCarousel />
-      <About />
-      <Skills />
-      <Brands />
-      <Experience />
-      <EcommerceGallery />
-      <Education />
-      <Languages />
-      <ExperienceBubbles />
+      <main>
+        <BrandCarousel />
+        <About />
+        <Skills />
+        <Brands />
+        <Experience />
+        <EcommerceGallery />
+        <Education />
+        <Languages />
+        <ExperienceBubbles />
+      </main>
       <Footer />
     </>
   )

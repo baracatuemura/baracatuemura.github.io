@@ -1,4 +1,3 @@
-import React from 'react'
 import experience from '../data/experience'
 
 function Experience() {
@@ -7,7 +6,7 @@ function Experience() {
       <div className="container">
         <h2>Experience</h2>
         {experience.map((job) => (
-          <div key={job.id} className="job">
+          <article key={job.id} className="job">
             <div className="job-logo">
               {job.logo ? (
                 <img src={job.logo} alt={`${job.company} logo`} loading="lazy" />
@@ -28,13 +27,13 @@ function Experience() {
               )}
             </div>
             <div className="job-body">
-              <div className="job-header">
+              <header className="job-header">
                 <span>
                   <span className="job-title">{job.title}</span>
                   <span className="job-company">  {job.company}</span>
                 </span>
                 <span className="job-date">{job.date}</span>
-              </div>
+              </header>
               <p className="job-description" dangerouslySetInnerHTML={{ __html: job.description }} />
               {job.projects && (
                 <ul className="project-list">
@@ -44,7 +43,7 @@ function Experience() {
                 </ul>
               )}
             </div>
-          </div>
+          </article>
         ))}
       </div>
     </section>

@@ -56,7 +56,7 @@ function BrandCarousel() {
           <div key={slide.id} className="brand-carousel__slide">
             <div className="brand-carousel__content">
               <div className="brand-carousel__image">
-                <img src={`assets/images/brands/${slide.file}`} alt={slide.name} />
+                <img src={`assets/images/brands/${slide.file}`} alt={slide.name} loading="lazy" />
               </div>
               <div className="brand-carousel__info">
                 <h2>{slide.name}</h2>

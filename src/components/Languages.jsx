@@ -1,4 +1,3 @@
-import React from 'react'
 import languages from '../data/languages'
 
 function Languages() {
@@ -6,14 +5,14 @@ function Languages() {
     <section className="section" id="languages">
       <div className="container">
         <h2>Languages</h2>
-        <div className="languages">
+        <ul className="languages">
           {languages.map((lang) => (
-            <div key={lang.name} className="language-item">
+            <li key={lang.name} className="language-item">
               <span className="language-name">{lang.name}</span>
               <span className="language-proficiency">{lang.proficiency}</span>
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   )

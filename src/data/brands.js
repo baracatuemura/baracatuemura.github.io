@@ -9,7 +9,7 @@ const brands = [
   { id: 'microsoft', name: 'Microsoft', file: 'brand-microsoft.png' },
   { id: 'rio2016', name: 'Rio 2016', file: 'brand-rio2016.png' },
   { id: 'fiat', name: 'Fiat', file: 'brand-fiat.png' },
-  { id: 'jeep', name: 'Jeep', file: 'brand-jeep.png' },
+  { id: 'jeep', name: 'Jeep', file: 'brand-jeep.webp' },
   { id: 'chrysler', name: 'Chrysler', file: 'brand-chrysler.png' },
   { id: 'nissin', name: 'Nissin', file: 'brand-nissin.png' },
   { id: 'bunge', name: 'Bunge', file: 'brand-bunge.png' },

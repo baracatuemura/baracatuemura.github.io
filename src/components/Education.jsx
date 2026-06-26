@@ -1,4 +1,3 @@
-import React from 'react'
 import education from '../data/education'
 
 function Education() {
@@ -6,13 +5,15 @@ function Education() {
     <section className="section" id="education">
       <div className="container">
         <h2>Education</h2>
-        {education.map((item, i) => (
-          <div key={i} className="education-item">
-            <div className="education-degree">{item.degree}</div>
-            <div className="education-school">{item.school}</div>
-            <div className="education-date">{item.date}</div>
-          </div>
-        ))}
+        <ul className="education-list">
+          {education.map((item, i) => (
+            <li key={i} className="education-item">
+              <span className="education-degree">{item.degree}</span>
+              <span className="education-school">{item.school}</span>
+              <span className="education-date">{item.date}</span>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   )
