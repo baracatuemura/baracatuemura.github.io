@@ -77,14 +77,7 @@ function ExperienceBubbles() {
   const [dims, setDims] = useState({ w: 800, h: 500 })
   const [tick, setTick] = useState(0)
 
-  useEffect(() => {
-    const svg = svgRef.current
-    if (!svg) return
-    const parent = svg.parentElement
-    const w = parent.clientWidth
-    const h = parent.clientHeight || 500
-    setDims({ w, h })
-
+  const initBubbles = useCallback((w, h) => {
     const brandsArr = Object.entries(clientBrands)
     const bubbles = experience.map((job, i) => {
       const brands = brandsArr.find(([id]) => id === job.id)
@@ -113,6 +106,30 @@ function ExperienceBubbles() {
     })
     bubblesRef.current = bubbles
   }, [])
+
+  useEffect(() => {
+    const svg = svgRef.current
+    if (!svg) return
+    const parent = svg.parentElement
+    const w = parent.clientWidth
+    const h = parent.clientHeight || 500
+    setDims({ w, h })
+    initBubbles(w, h)
+  }, [initBubbles])
+
+  useEffect(() => {
+    const onResize = () => {
+      const svg = svgRef.current
+      if (!svg) return
+      const parent = svg.parentElement
+      const w = parent.clientWidth
+      const h = parent.clientHeight || 500
+      setDims({ w, h })
+      initBubbles(w, h)
+    }
+    window.addEventListener('resize', onResize)
+    return () => window.removeEventListener('resize', onResize)
+  }, [initBubbles])
 
   const animate = useCallback(() => {
     const bubs = bubblesRef.current
