@@ -44,6 +44,16 @@ const slides = [
 
 function BrandCarousel() {
   const ref = React.useRef(null)
+  const [isMobile, setIsMobile] = React.useState(
+    typeof window !== 'undefined' && window.innerWidth <= 768
+  )
+
+  React.useEffect(() => {
+    const mq = window.matchMedia('(max-width: 768px)')
+    const handler = (e) => setIsMobile(e.matches)
+    mq.addEventListener('change', handler)
+    return () => mq.removeEventListener('change', handler)
+  }, [])
 
   React.useEffect(() => {
     const el = ref.current
@@ -68,27 +78,19 @@ function BrandCarousel() {
     dots: true,
     infinite: true,
     speed: 600,
-    slidesToShow: 2,
+    slidesToShow: isMobile ? 1 : 2,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 4000,
     pauseOnHover: true,
     arrows: true,
-    responsive: [
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 1,
-          centerMode: true,
-          centerPadding: '50px',
-        },
-      },
-    ],
+    centerMode: isMobile,
+    centerPadding: isMobile ? '50px' : '0px',
   }
 
   return (
     <section className="brand-carousel" id="brand-carousel" ref={ref}>
-      <Slider {...settings}>
+      <Slider key={isMobile ? 'mobile' : 'desktop'} {...settings}>
         {slides.map((slide) => (
           <div key={slide.id} className="brand-carousel__slide">
             <div className="brand-carousel__content">

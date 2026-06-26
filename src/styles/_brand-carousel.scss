@@ -99,11 +99,15 @@
 
 @media (max-width: 768px) {
   .brand-carousel {
+    overflow: visible;
+
     .slick-list {
-      overflow: visible;
+      overflow: visible !important;
     }
+  }
 
-
+  .brand-carousel__slide {
+    height: 60vh;
   }
 
   .brand-carousel__content {
