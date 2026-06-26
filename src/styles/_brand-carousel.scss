@@ -98,10 +98,25 @@
 }
 
 @media (max-width: 768px) {
+  .brand-carousel {
+    .slick-list {
+      overflow: visible;
+    }
+
+    .slick-slide {
+      opacity: 0.4;
+      transition: opacity 0.4s ease;
+
+      &.slick-current {
+        opacity: 1;
+      }
+    }
+  }
+
   .brand-carousel__content {
     flex-direction: column;
     gap: 32px;
-    padding: 0 48px;
+    padding: 0 24px;
     text-align: center;
   }
 
