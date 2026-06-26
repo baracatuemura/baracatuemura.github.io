@@ -54,6 +54,7 @@
     }
 
     &__leading > a:first-child,
+    &__leading > a:nth-child(3),
     &__leading > a:last-child {
       display: none;
     }
