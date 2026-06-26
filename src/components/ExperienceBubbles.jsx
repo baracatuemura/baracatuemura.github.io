@@ -16,7 +16,7 @@ const clientBrands = {
   ],
   redstage: ['Catgenie', 'Tweezerman', 'Yummy Mummy', "Gerber Children's"],
   isobar_ms: ['Rio 2016'],
-  esfera: ['Norte Marketing'],
+  esfera: ['Norte Marketing', 'Ativo.com', 'Circuito das Estações', 'Night Run', 'Bravus Race'],
   isobar2: ['Fiat', 'Jeep', 'Chrysler'],
   zaboo: ['Zaboo! (Startup)'],
   brancozulu: [
@@ -24,14 +24,41 @@ const clientBrands = {
     'Rascal', 'Trevisan', 'Cervejaria Nacional',
     'Central Clinic', 'TV Zimbo',
   ],
+  ogilvy: [
+    'The Office Frei Caneca', 'Ventura Enceada Guaruja', 'Lumina', 'Graciosa Home Resort',
+    'Ecoville', 'Osasco Prime Center', 'Rossi Allegro',
+  ],
+}
+
+const TEXT_COLOR_OVERRIDES = {
+  bees: '#000',
+  zaboo: '#000',
+}
+
+function bubbleTextColor(hex, id) {
+  if (id && TEXT_COLOR_OVERRIDES[id]) return TEXT_COLOR_OVERRIDES[id]
+  return '#fff'
 }
 
 function radiusFor(count) {
-  if (count >= 20) return 56
-  if (count >= 10) return 42
-  if (count >= 4) return 32
-  if (count >= 2) return 24
-  return 18
+  if (count >= 20) return 76
+  if (count >= 10) return 56
+  if (count >= 4) return 42
+  if (count >= 2) return 32
+  return 26
+}
+
+const LOGO_COLORS = {
+  summa: '#26757c',
+  bees: '#fefe00',
+  redstage: '#6330f5',
+  isobar_ms: '#fa4f00',
+  esfera: '#121fc8',
+  isobar2: '#fa4f00',
+  presenca: '#354cfd',
+  zaboo: '#99ee99',
+  brancozulu: '#000000',
+  ogilvy: '#eb3e42',
 }
 
 const COLORS = [
@@ -62,7 +89,7 @@ function ExperienceBubbles() {
       const brands = brandsArr.find(([id]) => id === job.id)
       const count = brands ? brands[1].length : 0
       const r = radiusFor(count)
-      const color = COLORS[i % COLORS.length]
+      const color = LOGO_COLORS[job.id] || COLORS[i % COLORS.length]
       return {
         id: job.id,
         company: job.company,
@@ -176,22 +203,48 @@ function ExperienceBubbles() {
     setHovered(null)
   }, [])
 
-  const handleBubbleClick = useCallback((id) => {
-    setSelected((prev) => (prev === id ? null : id))
+  const [origin, setOrigin] = useState(null)
+  const [phase, setPhase] = useState(null)
+
+  const handleBubbleClick = useCallback((id, e) => {
+    setSelected((prev) => {
+      if (prev === id) return prev
+      const svg = svgRef.current
+      if (!svg) return id
+      const rect = svg.getBoundingClientRect()
+      const bubble = bubblesRef.current.find((b) => b.id === id)
+      if (!bubble) return id
+      setOrigin({
+        x: rect.left + bubble.x,
+        y: rect.top + bubble.y,
+        r: bubble.r,
+        color: bubble.color,
+        textColor: bubbleTextColor(bubble.color, id),
+      })
+      setPhase('entering')
+      return id
+    })
   }, [])
 
   const closeDetail = useCallback(() => {
-    setSelected(null)
+    setPhase('leaving')
   }, [])
+
+  const handleAnimEnd = useCallback(() => {
+    if (phase === 'leaving') {
+      setSelected(null)
+      setOrigin(null)
+      setPhase(null)
+    }
+    if (phase === 'entering') {
+      setPhase('open')
+    }
+  }, [phase])
 
   const bubbles = bubblesRef.current
 
   return (
     <section className="section" id="experience-bubbles">
-      <div className="container">
-        <h2>Experience</h2>
-        <p className="bubbles-hint">Hover bubbles to explore brands — click for details</p>
-      </div>
       <div className="bubbles-wrapper">
         <svg
           ref={svgRef}
@@ -210,10 +263,10 @@ function ExperienceBubbles() {
               <g key={b.id}>
                 {showSatellites && b.brands.map((brand, bi) => {
                   const angle = (2 * Math.PI * bi) / b.brands.length - Math.PI / 2
-                  const dist = b.r + 80 + (b.brandCount > 10 ? 40 : 0)
+                  const dist = b.r + 100 + (b.brandCount > 10 ? 50 : 0)
                   const sx = b.x + Math.cos(angle) * dist
                   const sy = b.y + Math.sin(angle) * dist
-                  const sr = Math.max(22, Math.min(40, 72 / Math.sqrt(b.brandCount)))
+                  const sr = Math.max(28, Math.min(50, 90 / Math.sqrt(b.brandCount)))
                   return (
                     <g key={brand}>
                       <line
@@ -229,8 +282,8 @@ function ExperienceBubbles() {
                         x={sx} y={sy}
                         textAnchor="middle"
                         dominantBaseline="central"
-                        fontSize="9"
-                        fill="#fff"
+                        fontSize="11"
+                        fill={bubbleTextColor(b.color, b.id)}
                         fontWeight="600"
                       >
                         {brand.length > 10 ? brand.slice(0, 10) + '…' : brand}
@@ -260,6 +313,10 @@ function ExperienceBubbles() {
                   </circle>
                 )}
 
+                <clipPath id={`clip-${b.id}`}>
+                  <circle cx={b.x} cy={b.y} r={currentR - 1} />
+                </clipPath>
+
                 <circle
                   cx={b.x} cy={b.y}
                   r={currentR}
@@ -269,24 +326,44 @@ function ExperienceBubbles() {
                   style={{ cursor: 'pointer' }}
                   onMouseEnter={() => handleBubbleEnter(b.id)}
                   onMouseLeave={handleBubbleLeave}
-                  onClick={() => handleBubbleClick(b.id)}
+                  onClick={(e) => handleBubbleClick(b.id, e)}
                 />
 
-                {(currentR >= 5 || isSelected) && (
+                {b.logo ? (
+                  <image
+                    href={b.logo}
+                    x={b.x - currentR + 3}
+                    y={b.y - currentR + 3}
+                    width={(currentR - 3) * 2}
+                    height={(currentR - 3) * 2}
+                    clipPath={`url(#clip-${b.id})`}
+                    style={{ pointerEvents: 'none', userSelect: 'none' }}
+                  />
+                ) : (
                   <text
                     x={b.x} y={b.y}
                     textAnchor="middle"
                     dominantBaseline="central"
-                    fill="#fff"
-                    fontSize={isSelected ? 16 : Math.min(currentR * 0.55, 15)}
+                    fill={bubbleTextColor(b.color, b.id)}
+                    fontSize={Math.min(currentR * 0.5, 18)}
                     fontWeight="700"
                     style={{ pointerEvents: 'none', userSelect: 'none' }}
                   >
-                    {isSelected && b.brandCount > 0
-                      ? `${b.brandCount} brands`
-                      : b.company.length > 12
-                        ? b.company.slice(0, 12) + '…'
-                        : b.company}
+                    {b.placeholder || b.company.slice(0, 6)}
+                  </text>
+                )}
+
+                {isSelected && (
+                  <text
+                    x={b.x} y={b.y + currentR * 0.45}
+                    textAnchor="middle"
+                    dominantBaseline="central"
+                    fill={bubbleTextColor(b.color, b.id)}
+                    fontSize="14"
+                    fontWeight="600"
+                    style={{ pointerEvents: 'none', userSelect: 'none' }}
+                  >
+                    {b.brandCount} {b.brandCount === 1 ? 'brand' : 'brands'}
                   </text>
                 )}
               </g>
@@ -295,23 +372,43 @@ function ExperienceBubbles() {
         </svg>
       </div>
 
-      {selected && experience.find((e) => e.id === selected) && (() => {
+      {selected && origin && experience.find((e) => e.id === selected) && (() => {
         const job = experience.find((e) => e.id === selected)
         return (
-          <div className="bubbles-detail-overlay" onClick={closeDetail}>
-            <div className="bubbles-detail" onClick={(e) => e.stopPropagation()}>
-              <button className="bubbles-detail-close" onClick={closeDetail}>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <div className="bubbles-expand" onClick={closeDetail}>
+            <div
+              className={`bubbles-expand-circle ${phase === 'leaving' ? 'bubbles-expand-circle--leave' : ''}`}
+              style={{
+                '--origin-x': `${origin.x}px`,
+                '--origin-y': `${origin.y}px`,
+                '--start-r': `${origin.r}px`,
+                '--bg-color': origin.color,
+              }}
+              onAnimationEnd={handleAnimEnd}
+            />
+            <div className={`bubbles-expand-content${phase === 'leaving' ? ' bubbles-expand-content--leave' : ''}`} onClick={(e) => e.stopPropagation()}>
+              <button className="bubbles-expand-close" onClick={closeDetail}>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M18 6L6 18M6 6l12 12" />
                 </svg>
               </button>
+              <div className="bubbles-expand-logo">
+                {job.logo ? (
+                  <img src={job.logo} alt={`${job.company} logo`} />
+                ) : (
+                  <div className="bubbles-expand-logo-placeholder">
+                    {job.placeholder}
+                  </div>
+                )}
+              </div>
               <div className="bubbles-detail-header">
                 <h3>{job.company}</h3>
                 <span className="bubbles-detail-date">{job.date}</span>
               </div>
-              <p className="bubbles-detail-title">{job.title}</p>
+              <p className="bubbles-detail-title" style={{ color: origin.textColor }}>{job.title}</p>
               <div
                 className="bubbles-detail-desc"
+                style={{ color: origin.textColor }}
                 dangerouslySetInnerHTML={{ __html: job.description }}
               />
               {job.projects?.length > 0 && (

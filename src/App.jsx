@@ -17,11 +17,11 @@ function App() {
     <>
       <Nav />
       <Header />
-      <BrandCarousel />
+      <ExperienceBubbles />
       <About />
+      <BrandCarousel />
       <Skills />
       <Brands />
-      <ExperienceBubbles />
       <Experience />
       <EcommerceGallery />
       <Education />
