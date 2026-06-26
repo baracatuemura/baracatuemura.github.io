@@ -47,4 +47,11 @@
     font-weight: 600;
     color: var(--md-sys-color-on-surface);
   }
+
+  @media (max-width: 768px) {
+    &__role,
+    &__leading {
+      display: none;
+    }
+  }
 }
