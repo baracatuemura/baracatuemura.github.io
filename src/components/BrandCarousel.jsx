@@ -75,7 +75,7 @@ function BrandCarousel() {
   }, [])
 
   const settings = {
-    dots: true,
+    dots: !isMobile,
     infinite: true,
     speed: 600,
     slidesToShow: isMobile ? 1 : 2,
