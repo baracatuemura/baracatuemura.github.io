@@ -1,4 +1,4 @@
-import React from 'react'
+import useScrollSpy from '../hooks/useScrollSpy'
 
 const sections = [
   { id: 'about', label: 'About' },
@@ -11,26 +11,7 @@ const sections = [
 ]
 
 function Nav() {
-  const [active, setActive] = React.useState('')
-
-  React.useEffect(() => {
-    const observers = sections.map(({ id }) => {
-      const el = document.getElementById(id)
-      if (!el) return
-      return new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) setActive(id)
-        },
-        { rootMargin: '-40% 0px -55% 0px' },
-      )
-    })
-
-    observers.forEach((obs, i) => {
-      if (obs) obs.observe(document.getElementById(sections[i].id))
-    })
-
-    return () => observers.forEach((obs) => obs?.disconnect())
-  }, [])
+  const active = useScrollSpy(sections)
 
   return (
     <nav className="m3-nav">

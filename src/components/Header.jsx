@@ -1,13 +1,7 @@
-import React from 'react'
+import useScrollHeader from '../hooks/useScrollHeader'
 
 function Header() {
-  const [scrolled, setScrolled] = React.useState(false)
-
-  React.useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 0)
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+  const scrolled = useScrollHeader()
 
   return (
     <header className={`m3-top-app-bar${scrolled ? ' scrolled' : ''}`}>

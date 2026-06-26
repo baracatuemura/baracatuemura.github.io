@@ -1,34 +1,7 @@
-import React from 'react'
-import Nav from './components/Nav'
-import Header from './components/Header'
-import BrandCarousel from './components/BrandCarousel'
-import About from './components/About'
-import Skills from './components/Skills'
-import Brands from './components/Brands'
-import EcommerceGallery from './components/EcommerceGallery'
-import Experience from './components/Experience'
-import Education from './components/Education'
-import Languages from './components/Languages'
-import ExperienceBubbles from './components/ExperienceBubbles'
-import Footer from './components/Footer'
+import Home from './pages/Home'
 
 function App() {
-  return (
-    <>
-      <Nav />
-      <Header />
-      <BrandCarousel />
-      <About />
-      <Skills />
-      <Brands />
-      <Experience />
-      <EcommerceGallery />
-      <Education />
-      <Languages />
-      <ExperienceBubbles />
-      <Footer />
-    </>
-  )
+  return <Home />
 }
 
 export default App
