@@ -84,8 +84,6 @@
   opacity: 0;
   animation: fadeInUp 0.3s 0.2s ease forwards;
   cursor: default;
-  max-height: 100vh;
-  overflow-y: auto;
 }
 
 .bubbles-expand-content--leave {
@@ -145,6 +143,23 @@
   font-size: 0.95rem;
   line-height: 1.7;
   color: #fff;
+  max-height: 40vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+  }
 
   strong {
     font-weight: 600;
