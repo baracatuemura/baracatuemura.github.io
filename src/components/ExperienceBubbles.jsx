@@ -410,7 +410,7 @@ function ExperienceBubbles() {
               onAnimationEnd={handleAnimEnd}
             />
             <div className={`bubbles-expand-content${phase === 'leaving' ? ' bubbles-expand-content--leave' : ''}`} onClick={(e) => e.stopPropagation()}>
-              <button className="bubbles-expand-close" onClick={closeDetail}>
+              <button className="bubbles-expand-close" onClick={closeDetail} style={{ color: origin.textColor }}>
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M18 6L6 18M6 6l12 12" />
                 </svg>
@@ -425,8 +425,8 @@ function ExperienceBubbles() {
                 )}
               </div>
               <div className="bubbles-detail-header">
-                <h3>{job.company}</h3>
-                <span className="bubbles-detail-date">{job.date}</span>
+                <h3 style={{ color: origin.textColor }}>{job.company}</h3>
+                <span className="bubbles-detail-date" style={{ color: origin.textColor }}>{job.date}</span>
               </div>
               <p className="bubbles-detail-title" style={{ color: origin.textColor }}>{job.title}</p>
               <div
