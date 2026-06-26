@@ -2,7 +2,7 @@
 
 #experience-bubbles {
   position: relative;
-  overflow: visible;
+  overflow: hidden;
 }
 
 .bubbles-hint {
@@ -14,14 +14,20 @@
 
 .bubbles-wrapper {
   width: 100%;
-  height: 550px;
+}
+
+.bubbles-expanded {
+  height: 100vh;
+
+  .bubbles-wrapper {
+    height: 100%;
+  }
 }
 
 .bubbles-svg {
   display: block;
   width: 100%;
   height: 100%;
-  overflow: visible;
 }
 
 .bubbles-expand {

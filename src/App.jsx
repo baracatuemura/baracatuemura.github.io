@@ -17,15 +17,15 @@ function App() {
     <>
       <Nav />
       <Header />
-      <ExperienceBubbles />
-      <About />
       <BrandCarousel />
+      <About />
       <Skills />
       <Brands />
       <Experience />
       <EcommerceGallery />
       <Education />
       <Languages />
+      <ExperienceBubbles />
       <Footer />
     </>
   )

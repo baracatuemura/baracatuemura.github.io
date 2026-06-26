@@ -70,6 +70,7 @@ function ExperienceBubbles() {
   const svgRef = useRef(null)
   const requestRef = useRef(null)
   const mouseRef = useRef({ x: -9999, y: -9999 })
+  const smoothMouse = useRef({ x: -9999, y: -9999 })
   const bubblesRef = useRef([])
   const [hovered, setHovered] = useState(null)
   const [selected, setSelected] = useState(null)
@@ -119,7 +120,11 @@ function ExperienceBubbles() {
       requestRef.current = requestAnimationFrame(animate)
       return
     }
-    const { x: mx, y: my } = mouseRef.current
+    const raw = mouseRef.current
+    const sm = smoothMouse.current
+    sm.x += (raw.x - sm.x) * 0.12
+    sm.y += (raw.y - sm.y) * 0.12
+    const { x: mx, y: my } = sm
     const { w, h } = dims
 
     for (let i = 0; i < bubs.length; i++) {
@@ -146,9 +151,9 @@ function ExperienceBubbles() {
         const dx = mx - b.x
         const dy = my - b.y
         const dist = Math.sqrt(dx * dx + dy * dy) || 1
-        const grav = Math.min(1200 / (dist + 100), 0.5)
-        b.vx += (dx / dist) * grav * 0.03
-        b.vy += (dy / dist) * grav * 0.03
+        const grav = Math.min(600 / (dist + 80), 0.25)
+        b.vx += (dx / dist) * grav * 0.02
+        b.vy += (dy / dist) * grav * 0.02
       }
 
       const cx = w / 2
@@ -192,6 +197,7 @@ function ExperienceBubbles() {
 
   const handleMouseLeave = useCallback(() => {
     mouseRef.current = { x: -9999, y: -9999 }
+    smoothMouse.current = { x: -9999, y: -9999 }
     setHovered(null)
   }, [])
 
@@ -321,7 +327,7 @@ function ExperienceBubbles() {
                   cx={b.x} cy={b.y}
                   r={currentR}
                   fill={isSelected ? b.color : `${b.color}dd`}
-                  stroke={isHovered || isSelected ? '#fff' : 'none'}
+                  stroke={isHovered || isSelected ? '#fff' : b.color}
                   strokeWidth={isHovered || isSelected ? 2 : 0}
                   style={{ cursor: 'pointer' }}
                   onMouseEnter={() => handleBubbleEnter(b.id)}
