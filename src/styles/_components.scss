@@ -291,6 +291,12 @@
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 20px;
   padding: 0 24px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding: 0 16px;
+  }
 }
 
 .ecom-card {
@@ -373,6 +379,50 @@
 
     &:hover {
       text-decoration: underline;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .ecom-card {
+    aspect-ratio: auto;
+    perspective: none;
+  }
+
+  .ecom-card-inner {
+    display: flex;
+    flex-direction: column;
+    transform: none;
+    transform-style: flat;
+  }
+
+  .ecom-card-front,
+  .ecom-card-back {
+    position: static;
+    backface-visibility: visible;
+  }
+
+  .ecom-card-front {
+    border-radius: 12px 12px 0 0;
+
+    img {
+      height: 170px;
+    }
+  }
+
+  .ecom-card-back {
+    transform: none;
+    padding: 12px;
+    gap: 4px;
+    border-radius: 0 0 12px 12px;
+    height: 150px;
+    overflow: hidden;
+
+    p {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
   }
 }
